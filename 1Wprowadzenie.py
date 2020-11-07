@@ -27,3 +27,11 @@ for i in range(6, 11):
 
 print("Lista2:  ",lista2)
 print("Lista1:  ", lista)
+
+print("Zadanie7")
+lista.extend(lista2)
+print("Lista: ", lista)
+
+print("Zadanie8")
+krotka = (153732, "Jan Kowalski", 253757, "Paweł Nowak")
+print(krotka)
