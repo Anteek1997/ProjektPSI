@@ -33,5 +33,31 @@ lista.extend(lista2)
 print("Lista: ", lista)
 
 print("Zadanie8")
-krotka = (153732, "Jan Kowalski", 253757, "Paweł Nowak")
+krotka = (153732, "Jan Kowalski", 253757, "Pawel Nowak")
 print(krotka)
+
+print("Zadanie9")
+slownik = dict([("nr_indeksu", 153732), ("imie_nazwisko", "Jan Kowalski")])
+slownik["data_ur"] = "15.09.1998"
+slownik["wiek"] = 22
+slownik["adres"] = "Sloneczna 5/7"
+print("Slownik: ", slownik)
+
+print("Zadanie10")
+lista_numery = [997,998,999,998,112, 112, 112]
+lista_numery = set(lista_numery)
+print("Lista z numerami: ", lista_numery)
+
+print("Zadanie11")
+for i in range(1, 11):
+    print(i)
+
+print("Zadanie12")
+for i in range(100, -21, -5):
+    print(i)
+
+print("Zadanie13")
+slownik2 = dict([("numer", 123456789), ("imie", "Jan")])
+lista_slownik = [1,2,5,slownik2, "Kot"]
+napis = str(lista_slownik)
+print(napis)
