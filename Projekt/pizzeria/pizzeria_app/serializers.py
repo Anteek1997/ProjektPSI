@@ -1,38 +1,47 @@
 from rest_framework import serializers
-from .models import Klient, Pizza, Kucharz, Kierowca, Sos, Zamowienie
+from .models import Pizza, Sauce, Chef, Driver, Client, Order_Restaurant, Order_Client
 
 
-class KlientSerializer(serializers.ModelSerializer):
+class ClientSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Klient
-        fields = ['imie', 'nazwisko', 'telefon', 'adres']
+        model = Client
+        fields = ['name', 'surname', 'phone', 'address']
 
 
 class PizzaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pizza
-        fields = ['nazwa', 'opis', 'cena']
+        fields = ['name', 'description', 'price']
 
 
-class KucharzSerializer(serializers.ModelSerializer):
+class ChefSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Kucharz
-        fields = ['imie', 'nazwisko']
+        model = Chef
+        fields = ['name', 'surname']
 
 
-class KierowcaSerializer(serializers.ModelSerializer):
+class DriverSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Kierowca
-        fields = ['imie', 'nazwisko']
+        model = Driver
+        fields = ['name', 'surname', 'phone']
 
 
-class SosSerializer(serializers.ModelSerializer):
+class SauceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Sos
-        fields = ['nazwa', 'cena']
+        model = Sauce
+        fields = ['name', 'price']
 
-
-class ZamowienieSerializer(serializers.ModelSerializer):
+class Order_ClientSerializer(serializers.ModelSerializer):
+    pizza = serializers.SlugRelatedField(queryset=Pizza.objects.all(), slug_field='name')
+    sauce = serializers.SlugRelatedField(queryset=Sauce.objects.all(), slug_field='name')
+    client = serializers.SlugRelatedField(queryset=Client.objects.all(), slug_field='name')
     class Meta:
-        model = Zamowienie
-        fields = ['klient', 'kierowca', 'kucharz', 'pizza', 'cena_zamowienia', 'data_realizacji']
+        model = Order_Client
+        fields = ['pizza', 'sauce', 'client']
+
+class Order_RestaurantSerializer(serializers.ModelSerializer):
+    chef = serializers.SlugRelatedField(queryset=Chef.objects.all(), slug_field='name')
+    driver = serializers.SlugRelatedField(queryset=Driver.objects.all(), slug_field='name')
+    class Meta:
+        model = Order_Restaurant
+        fields = ['order_client', 'driver', 'chef', 'prize_order', 'date_realization']

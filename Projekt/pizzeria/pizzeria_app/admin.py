@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import Pizza, Sos, Kucharz, Kierowca, Klient, Zamowienie
+from .models import Pizza, Sauce, Chef, Driver, Client, Order_Restaurant, Order_Client
 
 admin.site.register(Pizza)
-admin.site.register(Sos)
-admin.site.register(Kucharz)
-admin.site.register(Kierowca)
-admin.site.register(Klient)
-admin.site.register(Zamowienie)
+admin.site.register(Sauce)
+admin.site.register(Chef)
+admin.site.register(Driver)
+admin.site.register(Client)
+admin.site.register(Order_Client)
+admin.site.register(Order_Restaurant)
