@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60d0ab10-bc5e-4a82-b700-7086af3778f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Projekt/.idea/Projekt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt/.idea/Projekt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projekt/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projekt/pizzeria/pizzeria/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt/pizzeria/pizzeria/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projekt/pizzeria/pizzeria_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt/pizzeria/pizzeria_app/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mvhq3teXZSZK6bBEnnryuwV56t" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projekt" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60d0ab10-bc5e-4a82-b700-7086af3778f4" name="Default Changelist" comment="" />
+      <created>1610380159635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610380159635</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="444" y="243" key="FileChooserDialogImpl" timestamp="1610380179038">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="444" y="243" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1024.728@0.0.1536.824" timestamp="1610380179038" />
+  </component>
+</project>

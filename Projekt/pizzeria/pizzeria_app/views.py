@@ -9,6 +9,8 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 
+
+
 def index(request):
     return HttpResponse("<h1>Witamy na stronie pizzeri!")
 
@@ -18,6 +20,11 @@ class KlientView(generics.ListCreateAPIView):
     queryset = Klient.objects.all()
     serializer_class = KlientSerializer
     name = 'client-list'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
+
+
 
 
 class KlientDetails(generics.RetrieveDestroyAPIView):
@@ -25,18 +32,28 @@ class KlientDetails(generics.RetrieveDestroyAPIView):
     queryset = Klient.objects.all()
     serializer_class = KlientSerializer
     name = 'client-detail'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
+
 
 
 class PizzaView(generics.ListCreateAPIView):
     queryset = Pizza.objects.all()
     serializer_class = PizzaSerializer
     name = 'pizza-list'
+    filterset_fields = ['nazwa', 'cena']
+    search_fields = ['nazwa', 'cena']
+    ordering_fields = ['nazwa', 'cena']
 
 
 class PizzaDetails(generics.RetrieveDestroyAPIView):
     queryset = Pizza.objects.all()
     serializer_class = PizzaSerializer
     name = 'pizza-detail'
+    filterset_fields = ['nazwa', 'cena']
+    search_fields = ['nazwa', 'cena']
+    ordering_fields = ['nazwa', 'cena']
 
 
 class KucharzView(generics.ListCreateAPIView):
@@ -44,6 +61,9 @@ class KucharzView(generics.ListCreateAPIView):
     queryset = Kucharz.objects.all()
     serializer_class = KucharzSerializer
     name = 'chief-list'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
 
 
 class KucharzDetails(generics.RetrieveDestroyAPIView):
@@ -51,6 +71,9 @@ class KucharzDetails(generics.RetrieveDestroyAPIView):
     queryset = Kucharz.objects.all()
     serializer_class = KucharzSerializer
     name = 'chief-detail'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
 
 
 class KierowcaView(generics.ListCreateAPIView):
@@ -58,6 +81,9 @@ class KierowcaView(generics.ListCreateAPIView):
     queryset = Kierowca.objects.all()
     serializer_class = KierowcaSerializer
     name = 'driver-list'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
 
 
 class KierowcaDetails(generics.RetrieveDestroyAPIView):
@@ -65,30 +91,45 @@ class KierowcaDetails(generics.RetrieveDestroyAPIView):
     queryset = Kierowca.objects.all()
     serializer_class = KierowcaSerializer
     name = 'driver-detail'
+    filterset_fields = ['imie', 'nazwisko']
+    search_fields = ['imie', 'nazwisko']
+    ordering_fields = ['imie', 'nazwisko']
 
 
 class SosView(generics.ListCreateAPIView):
     queryset = Sos.objects.all()
     serializer_class = SosSerializer
     name = 'sauce-list'
+    filterset_fields = ['nazwa', 'cena']
+    search_fields = ['nazwa', 'cena']
+    ordering_fields = ['nazwa', 'cena']
 
 
 class SosDetails(generics.RetrieveDestroyAPIView):
     queryset = Sos.objects.all()
     serializer_class = SosSerializer
     name = 'sauce-detail'
+    filterset_fields = ['nazwa', 'cena']
+    search_fields = ['nazwa', 'cena']
+    ordering_fields = ['nazwa', 'cena']
 
 
 class ZamowienieView(generics.ListCreateAPIView):
     queryset = Zamowienie.objects.all()
     serializer_class = ZamowienieSerializer
     name = 'order-list'
+    filterset_fields = ['klient', 'data_realizacji']
+    search_fields = ['klient', 'data_realizacji']
+    ordering_fields = ['klient', 'data_realizacji']
 
 
 class ZamowienieDetails(generics.RetrieveDestroyAPIView):
     queryset = Zamowienie.objects.all()
     serializer_class = ZamowienieSerializer
     name = 'order-detail'
+    filterset_fields = ['klient', 'data_realizacji']
+    search_fields = ['klient', 'data_realizacji']
+    ordering_fields = ['klient', 'data_realizacji']
 
 
 class ApiRoot(generics.GenericAPIView):
