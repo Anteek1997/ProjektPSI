@@ -14,7 +14,7 @@ def index(request):
 
 
 class ClientView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     name = 'client-list'
@@ -24,7 +24,7 @@ class ClientView(generics.ListCreateAPIView):
 
 
 class ClientDetails(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     name = 'client-detail'
@@ -34,7 +34,7 @@ class ClientDetails(generics.RetrieveDestroyAPIView):
 
 
 class PizzaView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Pizza.objects.all()
     serializer_class = PizzaSerializer
     name = 'pizza-list'
@@ -54,7 +54,7 @@ class PizzaDetails(generics.RetrieveDestroyAPIView):
 
 
 class ChefView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Chef.objects.all()
     serializer_class = ChefSerializer
     name = 'chief-list'
@@ -64,7 +64,7 @@ class ChefView(generics.ListCreateAPIView):
 
 
 class ChefDetails(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Chef.objects.all()
     serializer_class = ChefSerializer
     name = 'chief-detail'
@@ -74,7 +74,7 @@ class ChefDetails(generics.RetrieveDestroyAPIView):
 
 
 class DriverView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
     name = 'driver-list'
@@ -84,7 +84,7 @@ class DriverView(generics.ListCreateAPIView):
 
 
 class DriverDetails(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
     name = 'driver-detail'
@@ -94,7 +94,7 @@ class DriverDetails(generics.RetrieveDestroyAPIView):
 
 
 class SauceView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Sauce.objects.all()
     serializer_class = SauceSerializer
     name = 'sauce-list'
@@ -104,7 +104,7 @@ class SauceView(generics.ListCreateAPIView):
 
 
 class SauceDetails(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Sauce.objects.all()
     serializer_class = SauceSerializer
     name = 'sauce-detail'
@@ -123,6 +123,9 @@ class Order_ClientDetails(generics.RetrieveDestroyAPIView):
     queryset = Order_Client.objects.all()
     serializer_class = Order_ClientSerializer
     name = 'order-client-detail'
+    filterset_fields = ['name','surname']
+    search_fields = ['name','surname']
+    ordering_fields = ['name','surname']
 
 
 class Order_RestaurantView(generics.ListCreateAPIView):
@@ -130,6 +133,10 @@ class Order_RestaurantView(generics.ListCreateAPIView):
     queryset = Order_Restaurant.objects.all()
     serializer_class = Order_RestaurantSerializer
     name = 'order-restaurant-list'
+    filterset_fields = ['prize_order', 'date_realization']
+    search_fields = ['prize_order', 'date_realization']
+    ordering_fields = ['prize_order', 'date_realization']
+
 
 
 class Order_RestaurantDetails(generics.RetrieveDestroyAPIView):
@@ -137,6 +144,7 @@ class Order_RestaurantDetails(generics.RetrieveDestroyAPIView):
     queryset = Order_Restaurant.objects.all()
     serializer_class = Order_RestaurantSerializer
     name = 'order-restaurant-detail'
+
 
 
 class ApiRoot(generics.GenericAPIView):
