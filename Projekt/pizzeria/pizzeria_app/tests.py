@@ -95,15 +95,6 @@ class PizzaTests(APITestCase):
         assert Pizza.objects.get().description == new_description
         assert Pizza.objects.get().price == new_price
 
-    def test_post_existing_pizza_name(self):
-        new_name = 'Hawajska'
-        new_description = 'Ananas'
-        new_price = 25
-        response_one = self.post_pizza(new_name, new_description, new_price)
-        assert response_one.status_code == status.HTTP_201_CREATED
-        response_two = self.post_pizza(new_name, new_description, new_price)
-        assert response_two.status_code == status.HTTP_201_CREATED
-
     def test_filter_client_by_name(self):
         new_name = 'Hawajska'
         new_description = 'Ananas'

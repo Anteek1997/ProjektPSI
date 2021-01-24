@@ -120,7 +120,6 @@ class Order_ClientView(generics.ListCreateAPIView):
     serializer_class = Order_ClientSerializer
     name = 'order_client-list'
     filterset_fields = ['pizza', 'sauce', 'client']
-    search_fields = ['pizza', 'sauce', 'client']
     ordering_fields = ['pizza', 'sauce', 'client']
 
 
@@ -129,6 +128,7 @@ class Order_ClientDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order_Client.objects.all()
     serializer_class = Order_ClientSerializer
     name = 'order_client-detail'
+
 
 
 class Order_RestaurantView(generics.ListCreateAPIView):
