@@ -11,7 +11,6 @@ class Pizza(models.Model):
 
 
 class Sauce(models.Model):
-    objects = None
     name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
@@ -32,7 +31,6 @@ class Driver(models.Model):
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     phone = models.IntegerField()
-
 
     def __str__(self):
         return self.name + ' ' + self.surname

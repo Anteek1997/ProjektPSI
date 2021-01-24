@@ -1,9 +1,10 @@
 from rest_framework import serializers
 from .models import Pizza, Sauce, Chef, Driver, Client, Order_Restaurant, Order_Client
 from datetime import date
+from django.contrib.auth.models import User
 
 
-class ClientSerializer(serializers.ModelSerializer):
+class ClientSerializer(serializers.HyperlinkedModelSerializer):
     def validate_phone(self, value):
         if len(str(value)) != 9:
             raise serializers.ValidationError('Telefon musi składać sie z 9 cyfr.')
@@ -11,10 +12,10 @@ class ClientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Client
-        fields = ['name', 'surname', 'phone', 'address']
+        fields = ['pk', 'url', 'name', 'surname', 'phone', 'address']
 
 
-class PizzaSerializer(serializers.ModelSerializer):
+class PizzaSerializer(serializers.HyperlinkedModelSerializer):
     def validate_price(self, value):
         if value < 0:
             raise serializers.ValidationError("Cena nie może być ujemna.")
@@ -22,16 +23,16 @@ class PizzaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Pizza
-        fields = ['name', 'description', 'price']
+        fields = ['pk', 'url', 'name', 'description', 'price']
 
 
-class ChefSerializer(serializers.ModelSerializer):
+class ChefSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Chef
-        fields = ['name', 'surname']
+        fields = ['pk', 'url', 'name', 'surname']
 
 
-class DriverSerializer(serializers.ModelSerializer):
+class DriverSerializer(serializers.HyperlinkedModelSerializer):
     def validate_phone(self, value):
         if len(str(value)) != 9:
             raise serializers.ValidationError('Telefon musi składać sie z 9 cyfr.')
@@ -39,10 +40,10 @@ class DriverSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Driver
-        fields = ['name', 'surname', 'phone']
+        fields = ['pk', 'url', 'name', 'surname', 'phone']
 
 
-class SauceSerializer(serializers.ModelSerializer):
+class SauceSerializer(serializers.HyperlinkedModelSerializer):
     def validate_price(self, value):
         if value < 0:
             raise serializers.ValidationError("Cena nie może być ujemna.")
@@ -50,29 +51,34 @@ class SauceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sauce
-        fields = ['name', 'price']
+        fields = ['pk', 'url', 'name', 'price']
 
 
-class Order_ClientSerializer(serializers.ModelSerializer):
+class Order_ClientSerializer(serializers.HyperlinkedModelSerializer):
     pizza = serializers.SlugRelatedField(queryset=Pizza.objects.all(), slug_field='name')
     sauce = serializers.SlugRelatedField(queryset=Sauce.objects.all(), slug_field='name')
     client = serializers.SlugRelatedField(queryset=Client.objects.all(), slug_field="address")
 
     class Meta:
         model = Order_Client
-        fields = ['pizza', 'sauce', 'client']
+        fields = ['pk', 'url', 'pizza', 'sauce', 'client']
 
 
-class Order_RestaurantSerializer(serializers.ModelSerializer):
+class Order_RestaurantSerializer(serializers.HyperlinkedModelSerializer):
     def validate_date_realization(self, value):
         if value < date.today():
             raise serializers.ValidationError("Data nie może być wcześniejsza od dzisiejszej.")
         return value
 
-    chef = serializers.SlugRelatedField(queryset=Chef.objects.all(), slug_field='name')
-    driver = serializers.SlugRelatedField(queryset=Driver.objects.all(), slug_field='surname')
-
+    chef = serializers.HyperlinkedRelatedField(queryset=Chef.objects.all(), view_name='chef-detail')
+    driver = serializers.HyperlinkedRelatedField(queryset=Driver.objects.all(), view_name='driver-detail')
 
     class Meta:
         model = Order_Restaurant
-        fields = ['order_client', 'driver', 'chef', 'prize_order', 'date_realization']
+        fields = ['pk', 'url', 'order_client', 'driver', 'chef', 'prize_order', 'date_realization']
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['pk', 'url', 'username', 'password', 'email']

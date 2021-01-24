@@ -2,13 +2,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = '9fn64c)er7^2(4c_-n7*!oe+0t&e!eb2bt)-=rf(d1plp0^&9y'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,7 +19,6 @@ INSTALLED_APPS = [
     'pizzeria_app.apps.PizzeriaAppConfig',
     'django_filters',
     'pytest'
-
 
 ]
 
@@ -55,7 +52,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pizzeria.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -66,8 +62,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -84,7 +78,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -95,23 +88,24 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 
+REST_FRAMEWORK = {
 
-REST_FRAMEWORK={
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5,
 
-'DEFAULT_PAGINATION_CLASS':
-   'rest_framework.pagination.LimitOffsetPagination',
-   'PAGE_SIZE':5,
-
-
-'DEFAULT_FILTER_BACKENDS': (
-
+    'DEFAULT_FILTER_BACKENDS': (
 
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter'
-    )
+    ),
 
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
