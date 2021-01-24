@@ -3,7 +3,6 @@
 - Bartosz Antkiewicz indeks:150817
 - Mateusz Białek indeks:151198
 
-# Projekt pizzeria znajduję się na gałęzi master
 
 # Model bazy danych
 
